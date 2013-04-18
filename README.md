@@ -89,7 +89,7 @@ If everything goes well, now you can run the application if you have sqlite3 and
 
     ./src/nesting
 
-## Nesting need libraries
+## Nesting libraries
 
 Ok, we have a working source code!.
 Now we are ready to deal with libraries.
@@ -101,7 +101,7 @@ Fortunately, they are packaged in autotools format. This will make very easy to 
 Ok, let's make some changes to __configure.ac__. First we need to add the _AC_PROG_LIBTOOL_ macro, remove the system libs checks and tell autoconf to check our lib packages directories.
 
     ...
-    NESTING_LIBS="src/sqlite src/log4cpp"
+    NESTING_LIBS="sqlite log4cpp"
     AC_CONFIG_SUBDIRS([$NESTING_LIBS])
     ...
 
@@ -109,7 +109,7 @@ Last we need to change the __src/Makefile.am__ first adding a SUBDIRS directive 
 
     ...
     SUBDIRS = sqlite log4cpp
-    nesting_LDADD = $(top_builddir)/src/sqlite/libsqlite3.la $(top_builddir)/src/log4cpp/src/liblog4cpp.la
+    nesting_LDADD = $(top_builddir)/sqlite/libsqlite3.la $(top_builddir)/log4cpp/src/liblog4cpp.la
     nesting_CPPFLAGS = -I$(top_builddir)/sqlite -I$(top_builddir)/log4cpp/include
     ...
 
