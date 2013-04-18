@@ -94,7 +94,7 @@ If everything goes well, now you can run the application if you have sqlite3 and
 Ok, we have a working source code!.
 Now we are ready to deal with libraries.
 
-First of all, we need to get the sources for sqlite3 and log4cpp. To do that, I have added some lines to __autogen.sh__ that make use of wget to retrieve the packages, extract and move them the __src__ directory.
+First of all, we need to get the sources for sqlite3 and log4cpp. To do that, I have added some lines to __autogen.sh__ that make use of wget to retrieve the packages and tar to extract them.
 
 Fortunately, they are packaged in autotools format. This will make very easy to deal with them using _libtool_.
 
