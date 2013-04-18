@@ -73,4 +73,60 @@ __src/main.cpp__ is the application source code.
 [commit]()
 [tree]()
 
+## Ruining autoreconf
 
+    sh autogen.sh
+
+If everything goes well the package is _NOW_ ready.
+
+## Building
+
+Just run ./configure and then make.
+
+If everything goes well, now you can run the application if you have sqlite3 and log4cpp installed in your system.
+
+    ./src/nesting
+
+## Nesting need libraries
+
+Ok, we have a working source code!.
+Now we are ready to deal with libraries.
+
+First of all, we need to get the sources for sqlite3 and log4cpp. To do that, I have added some lines to __autogen.sh__ that make use of wget to retrieve the packages, extract and move them the __src__ directory.
+
+Fortunately, they are packaged in autotools format. This will make very easy to deal with them using _libtool_.
+
+Ok, let's make some changes to __configure.ac__. First we need to add the _AC_PROG_LIBTOOL_ macro, remove the system libs checks and tell autoconf to check our lib packages directories.
+
+    ...
+    NESTING_LIBS="src/sqlite src/log4cpp"
+    AC_CONFIG_SUBDIRS([$NESTING_LIBS])
+    ...
+
+Last we need to change the __src/Makefile.am__ first adding a SUBDIRS directive and the linking directives to our libraries. 
+
+    ...
+    SUBDIRS = sqlite log4cpp
+    nesting_LDADD = $(top_builddir)/src/sqlite/libsqlite3.la $(top_builddir)/src/log4cpp/src/liblog4cpp.la
+    nesting_CPPFLAGS = -I$(top_builddir)/sqlite -I$(top_builddir)/log4cpp/include
+    ...
+
+Now, the sources are ready again to re-generate our package.
+
+Run autoreconf
+
+    sh autogen.sh
+
+and Build
+
+    ./configure
+     make
+     
+If everything goes well, now you can install or distribute the project
+
+    make dist
+    sudo make install
+    nesting
+
+[commit]()
+[tree]()
