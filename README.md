@@ -16,21 +16,23 @@ To test my ability creating GNU/Linux redistributable packages.
 
 # Starting
 
-Create the nesting-autotools repository at GitHub initialized with a README.md an clone it.
-
-    git clone https://github.com/vicnala/nesting-autotools.git
-    cd nesting-autotools
-
-[commit]()
-[tree]()
-
-## Set-up the development environment
-
 First install the necessary system tools. If you use Debian-like distributions:
 
+    sudo apt-get install git
     sudo apt-get install build-essential
     sudo apt-get install automake autoconf libtool
     sudo apt-get install libsqlite3-dev liblog4cpp5-dev
+
+Create the nesting-autotools repository at GitHub initialized with a README.md an clone it.
+    
+    git clone https://github.com/vicnala/nesting-autotools.git
+    cd nesting-autotools
+
+[commit](https://github.com/vicnala/nesting-autotools/commit/aa9352663b7e6e8fe202605101269742b515b097)
+[tree](https://github.com/vicnala/nesting-autotools/tree/aa9352663b7e6e8fe202605101269742b515b097)
+
+## Set-up the development environment
+
 
 Please, __Note__ that we install libsqlite3-dev and liblog4cpp5-dev but only to start development more quickly.
 
@@ -53,8 +55,8 @@ to get this _project tree_:
         ├── main.cpp
         └── Makefile.am
 
-[commit]()
-[tree]()
+[commit](https://github.com/vicnala/nesting-autotools/commit/f3d80120067ed4d11d2fd6406857fe3dfb16175f)
+[tree](https://github.com/vicnala/nesting-autotools/tree/f3d80120067ed4d11d2fd6406857fe3dfb16175f)
 
 ## Writing the code
 
@@ -70,8 +72,8 @@ __src/Makefile.am__ defines the _SOURCES_ needed to build our _PROGRAMS_
 
 __src/main.cpp__ is the application source code.
 
-[commit]()
-[tree]()
+[commit](https://github.com/vicnala/nesting-autotools/commit/8e2c94362a9f6d69367af6b890c1cec84f09a7ea)
+[tree](https://github.com/vicnala/nesting-autotools/tree/8e2c94362a9f6d69367af6b890c1cec84f09a7ea)
 
 ## Ruining autoreconf
 
@@ -128,5 +130,5 @@ If everything goes well, now you can install or distribute the project
     sudo make install
     nesting
 
-[commit]()
-[tree]()
+[commit](https://github.com/vicnala/nesting-autotools/commit/bb10ddb0013f208f8d00a059f461965cbb0fc174)
+[tree](https://github.com/vicnala/nesting-autotools/tree/bb10ddb0013f208f8d00a059f461965cbb0fc174)
